@@ -1,0 +1,32 @@
+{
+  "name": "@taichuy/plugin-login-lite",
+  "displayName": "taichuy-plugin-login-lite",
+  "displayName.zh-CN": "太初y登录插件-lite",
+  "description": "Support custom login theme and color page. ",
+  "description.zh-CN": "1.支持自定义登录页面样式主题和颜色页面.",
+  "version": "1.9.6",
+  "homepage": "https://docs.taichuy.com/en-US/nocobase/plugin-login-lite",
+  "homepage.zh-CN": "https://docs.taichuy.com/nocobase/plugin-login-lite",
+  "main": "dist/server/index.js",
+  "dependencies": {
+    "markdown-it": "14.1.0"
+  },
+  "devDependencies": {
+    "@nocobase/plugin-auth": "1.x",
+    "markdown-it": "14.1.0",
+    "react-router-dom": "6.28.1",
+    "react-router": "6.28.1"
+  },
+  "peerDependencies": {
+    "@nocobase/client": "1.x",
+    "@nocobase/plugin-auth": "1.x",
+    "@nocobase/server": "1.x",
+    "@nocobase/test": "1.x"
+  },
+  "keywords": [
+    "login",
+    "html",
+    "index",
+    "lite"
+  ]
+}
