@@ -14,6 +14,8 @@ This plugin allows you to customize the appearance and behavior of the NocoBase 
 
 ## Preview
 
+The plugin supports multiple languages. These screenshots show the Chinese interface, but the UI will adapt to your selected language.
+
 <img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111506531.png" alt="Preview" style="zoom: 33%;" />
 
 Admin Configuration:
