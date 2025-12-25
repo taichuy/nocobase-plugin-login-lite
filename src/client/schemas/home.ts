@@ -130,13 +130,6 @@ export default {
           enum: [{ label: tStr('Password Login'), value: 'password' }],
           default: ['password'],
         },
-        copyright: {
-          title: tStr('Copyright settings (Markdown)'),
-          type: 'string',
-          'x-decorator': 'FormItem',
-          'x-component': 'Markdown',
-          default: '<div>Powered by <a href="https://www.nocobase.com/" target="_blank">NocoBase</a></div>',
-        },
         icp: {
           title: tStr('ICP filing information (Markdown)'),
           type: 'string',

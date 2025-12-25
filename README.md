@@ -37,7 +37,6 @@ The table below details the functions of each item in the configuration form:
 | **Webpage embed URL** | Input | The URL of the webpage to embed (iframe). Appears only when "Webpage Embed" is selected. | - |
 | **HTML embed code** | Text Area | Custom HTML code to render on the left. Appears only when "HTML Embed" is selected. | - |
 | **Open login methods** | Checkbox | Allowed login methods for users (e.g., Password Login). | Password Login |
-| **Copyright settings** | Markdown | Copyright information at the bottom of the page, supports Markdown. | Powered by NocoBase |
 | **ICP filing info** | Markdown | ICP filing or other footer information, supports Markdown. | Modified by taichuy |
 | **Background color** | Color Picker | Overall background color of the login page. | #000 |
 | **Font color** | Color Picker | Color of the main text on the page. | #fff |
