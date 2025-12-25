@@ -65,7 +65,7 @@ Adhering to the spirit of open source, we share some simple and practical plugin
 
 **GitHub Organization**: [https://github.com/taichuy](https://github.com/taichuy)  
 **Technical Consultation**: Follow the WeChat Official Account `taichuy-com` or email `taichu2021@gmail.com`  
-**Get Plugin**: Follow the official account and reply with the keyword `@taichuy/plugin-login-lite` to get the pre-packaged plugin.
+**Get Plugin**: Follow the official account and reply with the keyword `太初y的nocobase插件` to get the pre-packaged plugin.
 
 **Official Account**:
 

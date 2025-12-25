@@ -64,7 +64,7 @@ NocoBase 登录页自定义配置插件 (Lite 版)。
 
 **GitHub 组织**: [https://github.com/taichuy](https://github.com/taichuy)  
 **技术咨询**: 关注微信公众号 `taichuy-com` 或邮件 `taichu2021@gmail.com`  
-**插件获取**: 关注公众号并回复关键字 `@taichuy/plugin-login-lite`，即可获取打包好的插件安装包。
+**插件获取**: 关注公众号并回复关键字 `太初y的nocobase插件`，即可获取打包好的插件安装包。
 
 **公众号**：
 
