@@ -12,6 +12,16 @@ NocoBase 登录页自定义配置插件 (Lite 版)。
 3.  **添加配置**: 点击“添加”按钮，选择创建“首页配置”。
 4.  **应用配置**: 在配置列表中，打开“启用”开关即可应用该配置。同一时间只能启用一个首页配置。
 
+## 实际效果演示
+
+<img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111506531.png" alt="实际效果演示" style="zoom: 33%;" />
+
+后台配置：
+
+<img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111323992.png" alt="实际效果演示" style="zoom: 33%;" />
+
+
+
 ## 配置项说明
 
 下表详细说明了配置表单中各项的功能：

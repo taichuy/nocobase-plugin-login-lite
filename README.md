@@ -12,6 +12,14 @@ This plugin allows you to customize the appearance and behavior of the NocoBase 
 3.  **Add Configuration**: Click the "Add" button and choose to create a "Home configuration".
 4.  **Apply Configuration**: In the configuration list, toggle the "Enable" switch to apply the configuration. Only one home configuration can be enabled at a time.
 
+## Preview
+
+<img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111506531.png" alt="Preview" style="zoom: 33%;" />
+
+Admin Configuration:
+
+<img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111323992.png" alt="Admin Configuration" style="zoom: 33%;" />
+
 ## Configuration Options
 
 The table below details the functions of each item in the configuration form:
