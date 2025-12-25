@@ -127,6 +127,7 @@ export default {
           type: 'array',
           'x-decorator': 'FormItem',
           'x-component': 'Checkbox.Group',
+          'x-display': 'hidden',
           enum: [{ label: tStr('Password Login'), value: 'password' }],
           default: ['password'],
         },

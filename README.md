@@ -1,81 +1,80 @@
 # @taichuy/plugin-login-lite
 
-**English** | [简体中文](./README_CN.md)
+[English](./README_EN.md) | **简体中文**
 
-Custom Login Page Configuration Plugin for NocoBase (Lite Version).
-This plugin allows you to customize the appearance and behavior of the NocoBase login page directly from the admin panel.
+NocoBase 登录页自定义配置插件 (Lite 版)。
+本插件允许您直接在后台管理界面自定义 NocoBase 登录页面的外观和行为。
 
-## Usage
+## 使用说明
 
-1.  **Enable Plugin**: Go to the NocoBase Plugin Manager, search for `@taichuy/plugin-login-lite` and enable it.
-2.  **Access Configuration**: After enabling the plugin, refresh the page, find and click the "Login Configuration" menu in the system settings or sidebar.
-3.  **Add Configuration**: Click the "Add" button and choose to create a "Home configuration".
-4.  **Apply Configuration**: In the configuration list, toggle the "Enable" switch to apply the configuration. Only one home configuration can be enabled at a time.
+1.  **开启插件**: 进入 NocoBase 插件管理器，搜索 `@taichuy/plugin-login-lite` 并启用。
+2.  **访问配置**: 启用插件后，刷新页面，在系统设置或侧边栏中找到并点击“登录配置”菜单。
+3.  **添加配置**: 点击“添加”按钮，选择创建“首页配置”。
+4.  **应用配置**: 在配置列表中，打开“启用”开关即可应用该配置。同一时间只能启用一个首页配置。
 
-## Preview
+## 实际效果演示
+插件已经做了多语言话了，本次演示图片使用中文效果，实际使用时请根据需要切换语言。
 
-The plugin supports multiple languages. These screenshots show the Chinese interface, but the UI will adapt to your selected language.
+<img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111506531.png" alt="实际效果演示" style="zoom: 33%;" />
 
-<img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111506531.png" alt="Preview" style="zoom: 33%;" />
+后台配置：
 
-Admin Configuration:
+<img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111323992.png" alt="实际效果演示" style="zoom: 33%;" />
 
-<img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111323992.png" alt="Admin Configuration" style="zoom: 33%;" />
 
-## Configuration Options
 
-The table below details the functions of each item in the configuration form:
+## 配置项说明
 
-| Field Name | Type | Description | Default Value |
+下表详细说明了配置表单中各项的功能：
+
+| 字段名称 | 类型 | 说明 | 默认值 |
 | :--- | :--- | :--- | :--- |
-| **Title** | Input | The name of this configuration, used only for internal management. | - |
-| **Description** | Text Area | A brief description of this configuration. | - |
-| **Use system name** | Radio | Whether to directly display the application name from system settings. | Yes |
-| **Custom system name** | Input | Custom display name for the system. Appears only when "Use system name" is set to "No". | - |
-| **Left side content** | Radio | Choose the content type for the left area: Image, HTML Embed, or Webpage Embed. | Image |
-| **Left side image URL** | Input | The URL of the image to display on the left. Appears only when "Image" is selected. | Bing Daily Wallpaper |
-| **Webpage embed URL** | Input | The URL of the webpage to embed (iframe). Appears only when "Webpage Embed" is selected. | - |
-| **HTML embed code** | Text Area | Custom HTML code to render on the left. Appears only when "HTML Embed" is selected. | - |
-| **Open login methods** | Checkbox | Allowed login methods for users (e.g., Password Login). | Password Login |
-| **ICP filing info** | Markdown | ICP filing or other footer information, supports Markdown. | Modified by taichuy |
-| **Background color** | Color Picker | Overall background color of the login page. | #000 |
-| **Font color** | Color Picker | Color of the main text on the page. | #fff |
-| **Form theme color** | Color Picker | Background color of the login form container. | rgba(255,255,255,0.12) |
-| **Form text color** | Color Picker | Color of the text inside the login form. | #fff |
-| **Button color** | Color Picker | Background color of the login button. | rgba(255,255,255,0.2) |
-| **Button text color** | Color Picker | Color of the text on the login button. | #fff |
-| **Enable** | Switch | Whether to activate the current configuration immediately. | Yes |
+| **标题** (Title) | 文本框 | 该配置的名称，仅用于后台管理区分。 | - |
+| **描述** (Description) | 文本域 | 该配置的简要描述。 | - |
+| **是否使用系统自带系统名称** | 单选框 | 是否直接显示系统设置中的应用名称。 | 是 |
+| **自定义系统对外展示名字** | 文本框 | 自定义显示的系统名称。仅当“是否使用系统自带系统名称”选“否”时出现。 | - |
+| **左侧内容展示** | 单选框 | 选择登录页左侧区域展示的内容类型：图片、HTML嵌入 或 网页嵌入。 | 图片 |
+| **左侧图片地址** | 文本框 | 左侧显示的图片 URL 地址。仅当选择“图片”时出现。 | Bing 每日壁纸 |
+| **网页嵌入地址** | 文本框 | 左侧嵌入的网页 URL 地址 (iframe)。仅当选择“网页嵌入”时出现。 | - |
+| **HTML嵌入代码** | 文本域 | 左侧渲染的自定义 HTML 代码。仅当选择“HTML嵌入”时出现。 | - |
+| **备案信息** (Markdown) | Markdown | 页面底部显示的备案或其他页脚信息，支持 Markdown 语法。 | Modified by taichuy |
+| **背景主题颜色** | 颜色选择器 | 登录页面的整体背景颜色。 | #000 |
+| **字体颜色** | 颜色选择器 | 页面主要文本的颜色。 | #fff |
+| **登录表单主题颜色** | 颜色选择器 | 登录框容器的背景颜色。 | rgba(255,255,255,0.12) |
+| **登录表单文字颜色** | 颜色选择器 | 登录框内部的文字颜色。 | #fff |
+| **按钮背景颜色** | 颜色选择器 | 登录按钮的背景颜色。 | rgba(255,255,255,0.2) |
+| **按钮文字颜色** | 颜色选择器 | 登录按钮的文字颜色。 | #fff |
+| **启用** | 开关 | 是否立即启用当前配置。 | 是 |
 
-## More Features (Pro Version)
+## 更多功能 (Pro 版)
 
-If you need more advanced features, such as **WeChat ecosystem integration (WeChat Official Account QR code login, WeChat Mini Program unified user authentication)**, please contact us to purchase the paid plugin. Delivery and pricing are as follows:
+如果您需要更高级的功能，例如 **微信生态集成（微信公众号扫码登陆，微信小程序的用户统一认证功能）**，可以联系我们购买付费插件，交付和收费如下：
+| 授权类型                | 价格          | 包含权益                                                                             | 适合场景                               |
+| ----------------------- | ------------- | ------------------------------------------------------------------------------------ | -------------------------------------- |
+| **安装包授权**          | 300 元        | 1. 指定版本插件安装包<br>2. 一次性买断，永久使用授权<br>3. 基础安装指导              | 生产环境稳定部署，无需频繁更新         |
+| **安装包+源码仓库权限** | 600 元/第一年 | 1. 包含上述安装包所有权益<br>2. GitHub 私有仓库一年访问权限<br>3. 一年内持续更新支持 | 需要跟随 NocoBase 升级，或需要深度定制 |
+| **源码仓库续费**        | 300 元/年     | 1. 续费后继续获得 GitHub 私有仓库访问权限<br>2. 续费期内持续更新支持                 | 已购买过安装包的用户继续获取更新       |
 
-| License Type | Price | Benefits Included | Suitable Scenarios |
-| :--- | :--- | :--- | :--- |
-| **Package License** | $45 | 1. Plugin package for a specific version<br>2. One-time purchase, permanent usage license<br>3. Basic installation guidance | Stable production deployment, no frequent updates required |
-| **Package + Source** | $90/1st Year | 1. Includes all benefits of Package License<br>2. One year of access to GitHub private repository<br>3. Continuous update support for one year | Need to follow NocoBase upgrades or deep customization |
-| **Source Renewal** | $45/Year | 1. Continue GitHub private repository access after renewal<br>2. Continuous update support during the renewal period | Existing package users continuing to get updates |
+详细查看：[太初y的nocobase插件](https://docs.taichuy.com/nocobase)
 
-For more details: [Taichuy's NocoBase Plugins](https://docs.taichuy.com/en-US/nocobase)
+## 开源协议
 
-## License
+本项目采用 [AGPL-3.0](./LICENSE-AGPL.txt) 开源协议。
 
-This project is licensed under the [AGPL-3.0](./LICENSE-AGPL.txt).
-
-## Taichu y Team's NocoBase Plugins
+## 太初 y 团队的 NocoBase 插件
 
 ---
 
-Our Taichu y team has accumulated a series of practical plugins during the in-depth use of NocoBase to develop internal systems.
+我们太初 y 团队在深入使用 NocoBase 开发内部系统的过程中，积累了一系列实用插件。
 
-Adhering to the spirit of open source, we share some simple and practical plugins for free. At the same time, to balance R&D costs, we charge for some plugins with complex functions and high development investment to support continuous development.
+秉承开源精神，我们将部分简单实用的插件开源免费分享，同时为了平衡研发成本，对一些功能复杂、开发投入较大的插件进行收费，以支持持续开发。
 
-### 📞 Contact Us
+### 📞 联系我们
 
-**GitHub Organization**: [https://github.com/taichuy](https://github.com/taichuy)  
-**Technical Consultation**: Follow the WeChat Official Account `taichuy-com` or email `taichu2021@gmail.com`  
-**Get Plugin**: Follow the official account and reply with the keyword `太初y的nocobase插件` to get the pre-packaged plugin.
+**GitHub 组织**: [https://github.com/taichuy](https://github.com/taichuy)  
+**技术咨询**: 关注微信公众号 `taichuy-com` 或邮件 `taichu2021@gmail.com`  
+**插件获取**: 关注公众号并回复关键字 `太初y的nocobase插件`，即可获取打包好的插件安装包。
 
-**Official Account**:
+**公众号**：
 
-<img src="https://raw.githubusercontent.com/taichuy/docs/main/public/wechat_office_taichuy.jpg" alt="Taichuy Official Account" style="zoom: 33%;" />
+<img src="https://raw.githubusercontent.com/taichuy/docs/main/public/wechat_office_taichuy.jpg" alt="太初公众号" style="zoom: 33%;" />
