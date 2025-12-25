@@ -13,7 +13,7 @@ NocoBase 登录页自定义配置插件 (Lite 版)。
 4.  **应用配置**: 在配置列表中，打开“启用”开关即可应用该配置。同一时间只能启用一个首页配置。
 
 ## 实际效果演示
-插件已经做了多语言话了，本次演示图片使用中文效果，实际使用时请根据需要切换语言。
+插件已经做了多语言，本次演示图片使用中文效果，实际使用时请根据需要切换语言。
 
 <img src="https://raw.githubusercontent.com/taichuy/docs/main/docs/nocobase/plugin-login-lite.assets/image-20251225111506531.png" alt="实际效果演示" style="zoom: 33%;" />
 

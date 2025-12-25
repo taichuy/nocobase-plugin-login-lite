@@ -179,8 +179,8 @@ const CreateLoginConfig = (props: { type?: string }) => {
       formFontColor: '#fff',
       buttonBgColor: 'rgba(255,255,255,0.2)',
       buttonTextColor: '#fff',
-      copyright: `<div>${t('Powered by NocoBase')}</div>`,
-      icp: `<div>${t('Modified by taichuy')}</div>`,
+      copyright: `<div>Powered by NocoBase</div>`,
+      icp: `<div>Modified by taichuy</div>`,
     };
     const defaultOptions =
       key === 'home'

@@ -177,7 +177,7 @@ export function AuthLayoutRender({
             ) : (
               <div style={{ marginBottom: 8 }}>
                 <MarkdownRenderer
-                  content={`<div>${t('Powered by NocoBase')}</div><div>${t('Modified by taichuy')}</div>`}
+                  content={`<div>Powered by <a href="https://www.nocobase.com/" target="_blank">NocoBase</a></div>`}
                 />
               </div>
             )}
