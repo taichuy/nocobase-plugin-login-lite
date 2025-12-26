@@ -139,6 +139,12 @@ export function AuthLayoutRender({
           backgroundColor: bgColor,
           color: fontColor,
         }}
+        className={css`
+          @media (max-width: 768px) {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+          }
+        `}
       >
         <div
           className={css`
