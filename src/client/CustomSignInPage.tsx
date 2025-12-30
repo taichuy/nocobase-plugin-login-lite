@@ -16,16 +16,17 @@ import AuthPlugin, { AuthenticatorsContext } from '@nocobase/plugin-auth/client'
 import { UserOutlined, MobileOutlined, LoginOutlined, DingtalkOutlined } from '@ant-design/icons';
 import { useOutletContext } from 'react-router-dom';
 
-const useSignInForms = () => {
+const useSignInComponents = () => {
   const plugin = usePlugin(AuthPlugin);
   const authTypes = plugin.authTypes.getEntities();
-  const signInForms: any = {};
+  const signInComponents: any = {};
   for (const [authType, options] of authTypes) {
-    if (options.components?.SignInForm) {
-      signInForms[authType] = options.components.SignInForm;
-    }
+    signInComponents[authType] = {
+      SignInForm: options.components?.SignInForm,
+      SignInButton: options.components?.SignInButton,
+    };
   }
-  return signInForms;
+  return signInComponents;
 };
 
 export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfig?: any }) => {
@@ -36,16 +37,17 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
   const rawLoginConfig = propsLoginConfig || contextLoginConfig;
   const loginConfig = rawLoginConfig?.options || rawLoginConfig || {};
 
-  const signInForms = useSignInForms();
+  const signInComponents = useSignInComponents();
   const authenticators = useContext(AuthenticatorsContext);
 
   const loginMethods = loginConfig?.loginMethods || ['password'];
   const showPassword = loginMethods.includes('password');
 
-  // Filter authenticators that have a corresponding SignInForm
-  const formAuthenticators = authenticators.filter(
-    (a) => signInForms[a.authType] || signInForms[a.authType.toLowerCase()],
-  );
+  // Filter authenticators that have a corresponding SignInForm or SignInButton
+  const formAuthenticators = authenticators.filter((a) => {
+    const comps = signInComponents[a.authType] || signInComponents[a.authType.toLowerCase()];
+    return comps && (comps.SignInForm || comps.SignInButton);
+  });
 
   // Prepare available options
   const availableOptions: { type: 'authenticator'; key: string; label: string; icon: any; data?: any }[] = [];
@@ -119,33 +121,75 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
               gap: 14px;
             `}
           >
-            {availableOptions.map((option) => (
-              <Button
-                key={option.key}
-                block
-                size="large"
-                type="default"
-                icon={option.icon}
-                onClick={() => {
-                  setMode(option.key);
-                  if (option.type === 'authenticator') {
-                    setCurrentAuthenticator(option.data);
-                  }
-                }}
-                className={css`
-                  height: 44px;
-                  border-radius: 999px;
-                  background: ${buttonBgColor};
-                  border-color: ${buttonBgColor} !important;
-                  color: ${buttonTextColor} !important;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                `}
-              >
-                {option.label}
-              </Button>
-            ))}
+            {availableOptions.map((option) => {
+              const comps =
+                signInComponents[option.data.authType] || signInComponents[option.data.authType.toLowerCase()];
+              // If the authenticator only provides a SignInButton (no SignInForm), render it directly
+              if (comps?.SignInButton && !comps?.SignInForm) {
+                return (
+                  <div
+                    key={option.key}
+                    className={css`
+                      width: 100%;
+                      .ant-btn {
+                        width: 100%;
+                        height: 44px;
+                        border-radius: 999px;
+                        background: ${buttonBgColor};
+                        border-color: ${buttonBgColor} !important;
+                        color: ${buttonTextColor} !important;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        box-shadow: none;
+                      }
+                      .ant-btn:hover {
+                        filter: brightness(1.1);
+                        color: ${buttonTextColor} !important;
+                        border-color: ${buttonBgColor} !important;
+                      }
+                      .ant-space {
+                        width: 100%;
+                        display: flex;
+                      }
+                      .ant-space-item {
+                        width: 100%;
+                      }
+                    `}
+                  >
+                    <comps.SignInButton authenticator={option.data} />
+                  </div>
+                );
+              }
+
+              return (
+                <Button
+                  key={option.key}
+                  block
+                  size="large"
+                  type="default"
+                  icon={option.icon}
+                  onClick={() => {
+                    setMode(option.key);
+                    if (option.type === 'authenticator') {
+                      setCurrentAuthenticator(option.data);
+                    }
+                  }}
+                  className={css`
+                    height: 44px;
+                    border-radius: 999px;
+                    background: ${buttonBgColor};
+                    border-color: ${buttonBgColor} !important;
+                    color: ${buttonTextColor} !important;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  `}
+                >
+                  {option.label}
+                </Button>
+              );
+            })}
           </div>
         </div>
       )}
@@ -245,7 +289,12 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
 
           {currentAuthenticator &&
             React.createElement(
-              signInForms[currentAuthenticator.authType] || signInForms[currentAuthenticator.authType.toLowerCase()],
+              (() => {
+                const comps =
+                  signInComponents[currentAuthenticator.authType] ||
+                  signInComponents[currentAuthenticator.authType.toLowerCase()];
+                return comps?.SignInForm || comps?.SignInButton;
+              })(),
               {
                 authenticator: currentAuthenticator,
               },
