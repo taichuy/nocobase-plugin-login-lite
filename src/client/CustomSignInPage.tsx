@@ -13,7 +13,7 @@ import { css } from '@emotion/css';
 import { useCurrentDocumentTitle, useViewport, usePlugin } from '@nocobase/client';
 import { usePluginTranslation } from './locale';
 import AuthPlugin, { AuthenticatorsContext } from '@nocobase/plugin-auth/client';
-import { UserOutlined, MobileOutlined, LoginOutlined, DingtalkOutlined } from '@ant-design/icons';
+import { UserOutlined, MobileOutlined, LoginOutlined, DingtalkOutlined, MailOutlined } from '@ant-design/icons';
 import { useOutletContext } from 'react-router-dom';
 
 const useSignInComponents = () => {
@@ -54,14 +54,18 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
 
   formAuthenticators.forEach((a) => {
     // If it's basic/email, respect showPassword config
-    const isBasicOrEmail = a.authType === 'basic' || a.authType === 'email';
+    const isBasicOrEmail = a.authType === 'basic' || a.authType === 'email' || a.authType === 'Email';
     if (isBasicOrEmail && !showPassword) {
       return;
     }
 
     let icon = <LoginOutlined />;
     if (isBasicOrEmail) {
-      icon = <UserOutlined />;
+      if (a.authType === 'email' || a.authType === 'Email') {
+        icon = <MailOutlined />;
+      } else {
+        icon = <UserOutlined />;
+      }
     } else if (a.authType.toLowerCase() === 'sms') {
       icon = <MobileOutlined />;
     } else if (a.authType.toLowerCase() === 'dingtalk') {
