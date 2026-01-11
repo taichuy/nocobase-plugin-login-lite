@@ -75,7 +75,7 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
     availableOptions.push({
       type: 'authenticator',
       key: a.name,
-      label: isBasicOrEmail ? t('Password Login') : a.title || a.name,
+      label: a.title || (isBasicOrEmail ? t('Password Login') : a.name),
       icon,
       data: a,
     });

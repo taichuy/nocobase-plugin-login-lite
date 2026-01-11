@@ -176,6 +176,12 @@ export function AuthLayoutRender({
             `}
             style={{ width: '90%', margin: '40px auto 0', color: fontColor }}
           >
+            {/* 警告：版权信息,根据开源协议，开源版不许移除对应版权信息 
+               如果要修改调整请遵守官方许可协议：
+               中文；https://www.nocobase.com/cn/agreement
+               English：https://www.nocobase.com/agreement
+               调整版权信息请遵守开源协议，否则可能会导致法律问题等一系列原因，我方不对此负任何责任
+            */}
             {loginConfig.copyright ? (
               <div style={{ marginBottom: 8 }}>
                 <MarkdownRenderer content={loginConfig.copyright} />
@@ -187,7 +193,7 @@ export function AuthLayoutRender({
                 />
               </div>
             )}
-
+            {/* ICP 备案信息 */}
             {loginConfig.icp && (
               <div style={{ marginBottom: 8 }}>
                 <MarkdownRenderer content={loginConfig.icp} />
