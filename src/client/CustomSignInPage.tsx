@@ -13,7 +13,14 @@ import { css } from '@emotion/css';
 import { useCurrentDocumentTitle, useViewport, usePlugin } from '@nocobase/client';
 import { usePluginTranslation } from './locale';
 import AuthPlugin, { AuthenticatorsContext } from '@nocobase/plugin-auth/client';
-import { UserOutlined, MobileOutlined, LoginOutlined, DingtalkOutlined, MailOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  MobileOutlined,
+  LoginOutlined,
+  DingtalkOutlined,
+  MailOutlined,
+  GoogleOutlined,
+} from '@ant-design/icons';
 import { useOutletContext } from 'react-router-dom';
 
 const useSignInComponents = () => {
@@ -70,6 +77,8 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
       icon = <MobileOutlined />;
     } else if (a.authType.toLowerCase() === 'dingtalk') {
       icon = <DingtalkOutlined />;
+    } else if (a.authType.toLowerCase() === 'google' || a.authType === 'Google') {
+      icon = <GoogleOutlined />;
     }
 
     availableOptions.push({

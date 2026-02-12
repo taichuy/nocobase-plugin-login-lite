@@ -4,7 +4,7 @@
   "displayName.zh-CN": "太初y登录插件-lite",
   "description": "Support custom login theme and color page. ",
   "description.zh-CN": "1.支持自定义登录页面样式主题和颜色页面.",
-  "version": "1.9.6",
+  "version": "1.9.42",
   "homepage": "https://docs.taichuy.com/en-US/nocobase/plugin-login-lite",
   "homepage.zh-CN": "https://docs.taichuy.com/nocobase/plugin-login-lite",
   "main": "dist/server/index.js",
