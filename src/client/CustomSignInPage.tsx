@@ -157,9 +157,12 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
                         box-shadow: none;
                       }
                       .ant-btn:hover {
-                        filter: brightness(1.1);
-                        color: ${buttonTextColor} !important;
+                        background: ${buttonBgColor} !important;
                         border-color: ${buttonBgColor} !important;
+                        color: ${buttonTextColor} !important;
+                        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35) !important;
+                        opacity: 0.92 !important;
+                        filter: none !important;
                       }
                       .ant-space {
                         width: 100%;
@@ -197,6 +200,14 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    &:hover {
+                      background: ${buttonBgColor} !important;
+                      border-color: ${buttonBgColor} !important;
+                      color: ${buttonTextColor} !important;
+                      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35) !important;
+                      opacity: 0.88 !important;
+                      filter: none !important;
+                    }
                   `}
                 >
                   {option.label}
@@ -255,7 +266,10 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
               box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05) !important;
             }
             .ant-btn-primary:hover {
-              filter: brightness(1.06);
+              background-color: ${buttonBgColor} !important;
+              border-color: ${buttonBgColor} !important;
+              opacity: 0.9;
+              box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25) !important;
             }
             .ant-form-item-explain-error {
               color: #ffccc7 !important;
@@ -273,9 +287,9 @@ export const CustomSignInPage = ({ loginConfig: propsLoginConfig }: { loginConfi
             }
             .ant-btn-default:hover,
             .ant-btn:not(.ant-btn-primary):not(.ant-btn-link):not(.ant-btn-text):hover {
-              border-color: rgba(255, 255, 255, 0.8) !important;
+              border-color: rgba(255, 255, 255, 0.6) !important;
               color: ${formFontColor} !important;
-              opacity: 0.9;
+              opacity: 0.85;
             }
             a {
               color: ${formFontColor} !important;
