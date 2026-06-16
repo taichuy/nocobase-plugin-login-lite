@@ -8,9 +8,9 @@
  */
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Col, Row } from 'antd';
+import { Col, Row, Spin } from 'antd';
 import { Outlet } from 'react-router-dom';
-import { useSystemSettings, useToken, useAPIClient, useRequest } from '@nocobase/client';
+import { useSystemSettings, useRequest } from '@nocobase/client';
 import { usePluginTranslation } from './locale';
 import { AuthenticatorsContextProvider } from '@nocobase/plugin-auth/client';
 import { css } from '@emotion/css';
@@ -25,6 +25,55 @@ const md = new MarkdownIt({
 function MarkdownRenderer({ content }: { content: string }) {
   const html = useMemo(() => md.render(content || ''), [content]);
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+const DEFAULT_POWERED_BY_HTML =
+  '<div>Powered by <a href="https://www.nocobase.com/" target="_blank">NocoBase</a></div>';
+
+type LoginConfigOptions = {
+  useSystemName?: 'yes' | 'no';
+  customSystemName?: string;
+  leftContentType?: 'image' | 'html' | 'url';
+  leftImage?: string;
+  leftUrl?: string;
+  leftHtml?: string;
+  loginMethods?: string[];
+  copyright?: string;
+  icp?: string;
+  themeColor?: string;
+  themeOpacity?: number;
+  fontColor?: string;
+  formThemeColor?: string;
+  formFontColor?: string;
+  buttonBgColor?: string;
+  buttonTextColor?: string;
+};
+
+type LoginConfigRecord = LoginConfigOptions & {
+  options?: LoginConfigOptions;
+  __previewLive?: boolean;
+};
+
+type LoginConfigResponse = {
+  data?: LoginConfigRecord | null;
+};
+
+let cachedLoginConfig: LoginConfigRecord | null = null;
+
+function AuthLayoutLoading() {
+  return (
+    <div
+      style={{
+        width: '100vw',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Spin />
+    </div>
+  );
 }
 
 const hexToRgba = (hex: string, alpha: number) => {
@@ -50,7 +99,7 @@ export function AuthLayoutRender({
   loginConfig: propsLoginConfig,
   children,
 }: {
-  loginConfig: any;
+  loginConfig?: LoginConfigRecord | null;
   children?: React.ReactNode;
 }) {
   const { data } = useSystemSettings() || {};
@@ -58,10 +107,11 @@ export function AuthLayoutRender({
 
   // Use options if available, otherwise fallback to the object itself (in case it's already the options object)
   const loginConfig = propsLoginConfig?.options || propsLoginConfig || {};
+  const isPreview = !!propsLoginConfig?.__previewLive;
 
   // 默认配置
   const defaultBgUrl = 'https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=zh-CN';
-  const [bgUrl, setBgUrl] = useState(defaultBgUrl);
+  const [bgUrl, setBgUrl] = useState('');
 
   useEffect(() => {
     if (loginConfig.leftContentType === 'image') {
@@ -85,9 +135,17 @@ export function AuthLayoutRender({
   }
 
   const fontColor = loginConfig.fontColor || '#fff';
+  const footerCopyright = loginConfig.copyright || DEFAULT_POWERED_BY_HTML;
 
   return (
-    <Row style={{ height: '100%', overflow: 'hidden' }}>
+    <Row
+      style={{
+        width: isPreview ? '100%' : '100vw',
+        height: isPreview ? '100%' : '100vh',
+        minHeight: isPreview ? '100%' : '100vh',
+        overflow: 'hidden',
+      }}
+    >
       <Col flex="auto" style={{ height: '100%' }}>
         {/* 左侧内容区域 */}
         {isUrlContent ? (
@@ -105,7 +163,8 @@ export function AuthLayoutRender({
           <div
             style={{
               height: '100%',
-              backgroundImage: `url(${bgUrl})`,
+              backgroundColor: '#111',
+              backgroundImage: `url(${bgUrl || defaultBgUrl})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               display: 'flex',
@@ -182,17 +241,9 @@ export function AuthLayoutRender({
                English：https://www.nocobase.com/agreement
                调整版权信息请遵守开源协议，否则可能会导致法律问题等一系列原因，我方不对此负任何责任
             */}
-            {loginConfig.copyright ? (
-              <div style={{ marginBottom: 8 }}>
-                <MarkdownRenderer content={loginConfig.copyright} />
-              </div>
-            ) : (
-              <div style={{ marginBottom: 8 }}>
-                <MarkdownRenderer
-                  content={`<div>Powered by <a href="https://www.nocobase.com/" target="_blank">NocoBase</a></div>`}
-                />
-              </div>
-            )}
+            <div style={{ marginBottom: 8 }}>
+              <MarkdownRenderer content={footerCopyright} />
+            </div>
             {/* ICP 备案信息 */}
             {loginConfig.icp && (
               <div style={{ marginBottom: 8 }}>
@@ -207,7 +258,11 @@ export function AuthLayoutRender({
 }
 
 export function CustomAuthLayout() {
-  const { data: loginConfigResult } = useRequest(
+  const {
+    data: loginConfigResult,
+    loading,
+    error,
+  } = useRequest(
     {
       resource: 'login_configs',
       action: 'getActiveConfig', // This action needs to be implemented in server
@@ -222,7 +277,18 @@ export function CustomAuthLayout() {
     },
   );
 
-  const loginConfig = (loginConfigResult as any)?.data || {};
+  const requestConfig = (loginConfigResult as LoginConfigResponse | undefined)?.data || null;
+  const loginConfig = loading ? cachedLoginConfig : requestConfig || (error ? cachedLoginConfig : null) || {};
+
+  useEffect(() => {
+    if (!loading && !error) {
+      cachedLoginConfig = requestConfig;
+    }
+  }, [error, loading, requestConfig]);
+
+  if (loading && !loginConfig) {
+    return <AuthLayoutLoading />;
+  }
 
   return <AuthLayoutRender loginConfig={loginConfig} />;
 }
